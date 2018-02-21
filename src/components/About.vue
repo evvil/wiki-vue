@@ -8,8 +8,17 @@
 </template>
 
 <script>
-  // import { updateHeadline } from '../vuex/actions' export default { vuex: { actions: { updateHeadline: updateHeadline } },
-  // created () { this.updateHeadline('关于') } }
+  import {
+    mapActions
+  } from 'vuex'
+  export default {
+    created() {
+      this.updateHeadline('关于')
+    },
+    methods: {
+      ...mapActions(['updateHeadline'])
+    }
+  }
 </script>
 
 <style>

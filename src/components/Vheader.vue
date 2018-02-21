@@ -3,51 +3,46 @@
     <div class="header-background"></div>
     <ul :class="['nav', { 'nav-fixed': !isTop, 'nav-invisible': !isVisible }]">
       <li>
-        <a v-link="'/home'">主页</a>
+        <router-link to="home">主页</router-link>
       </li>
       <li>
-        <a v-link="'/about'">关于</a>
+        <router-link to="about">关于</router-link>
       </li>
       <li>
-        <a v-link="'/tags'">标签</a>
+        <router-link to="tags">标签</router-link>
       </li>
     </ul>
-    <div class="header-title"><h1 v-if="show" transition="fade">{{headlineFinal}}</h1></div>
+    <div class="header-title">
+      <h1 transition="fade">{{headline}}</h1>
+    </div>
   </div>
 </template>
 
 <script>
-  // import { headline } from '../vuex/getters'
+  import {
+    mapGetters
+  } from 'vuex'
 
   export default {
-    data () {
+    data() {
       return {
         show: true,
         nav: 'nav',
         isTop: true,
         isVisible: true,
-        headlineFinal: ''
       }
     },
-    vuex: {
-      getters: {
-        // headline: headline
-      }
+    computed: {
+      ...mapGetters(['headline'])
     },
-    watch: {
-      'headline': function (val, oldVal) {
-        this.show = false
-        setTimeout(() => {
-          this.show = true
-          this.headlineFinal = val
-        }, 400)
-      }
+    ready() {
+      // this.scroll()
     },
-    ready () {
-      this.scroll()
+    created() {
+      // console.log(this.$router)
     },
     methods: {
-      scroll () {
+      scroll() {
         let beforeScrollTop = document.body.scrollTop
 
         window.onscroll = () => {
@@ -150,7 +145,8 @@
       padding: 1rem 1.4rem;
     }
 
-    .header, .header-background {
+    .header,
+    .header-background {
       height: 24rem;
     }
   }

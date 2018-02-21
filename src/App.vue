@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="wrapper">
     <vheader class="header"></vheader>
     <div class="main">
       <router-view class="main-wrapper" transition="fade" transition-mode="out-in"></router-view>
@@ -12,14 +12,12 @@
 <script>
   import Vheader from './components/Vheader'
   import Vfooter from './components/Vfooter'
-  // import Store from './vuex/store'
 
   export default {
     components: {
       Vheader,
       Vfooter
     },
-    // store: Store
   }
 </script>
 

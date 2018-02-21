@@ -1,36 +1,31 @@
 <template>
   <div class="list-wrapper">
     <ul class="list-container" id="list-ul">
-      <!-- <li v-for="item in items">
-        <a v-link="{ name: 'article', params: {id: item.objectId}}">
+      <li v-for="item in contentList">
+        <router-link :to="{ name: 'article', params: {id: item.objectId}}">
           <p class="list-title">{{item.title}}</p>
           <p class="list-updated">{{item.createdAt}}</p>
           <p class="list-abstract">{{item.abstract}}</p>
-        </a>
-      </li> -->
+        </router-link>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
-  // import {contentList} from '../vuex/getters'
-  // import {getContentList, updateHeadline} from '../vuex/actions'
-
-  // export default {
-  //   vuex: {
-  //     getters: {
-  //       items: contentList
-  //     },
-  //     actions: {
-  //       getList: getContentList,
-  //       updateHeadline: updateHeadline
-  //     }
-  //   },
-  //   created () {
-  //     this.getList()
-  //     this.updateHeadline('将就的博客')
-  //   }
-  // }
+  import {
+    mapActions,mapGetters
+  } from 'vuex'
+  export default {
+    computed:{
+      ...mapGetters(['contentList'])
+    },
+    methods:{...mapActions(['getContentList', 'updateHeadline'])},
+    created () {
+      this.getContentList()
+      this.updateHeadline('将就的博客')
+    }
+  }
 </script>
 
 <style>

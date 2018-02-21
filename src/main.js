@@ -1,48 +1,44 @@
 import Vue from 'vue'
-import App from './App.vue'
 import VueRouter from 'vue-router'
+import App from './App.vue'
+import store from './store'
+
+import About from './components/About.vue'
+import Home from './components/Home.vue'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 const routes = [
-  { path: '/home', component: require("./components/Home.vue") },
-  // { path: '/bar', component: Bar }
+  {
+    path: '/home',
+    component: Home
+  },
+  {
+    path: '/about',
+    component: About
+  },
+  // {
+  //   path: '/tags',
+  //   component: require("./components/Tags.vue")
+  // },
+  // {
+  //   path: '/article/:id',
+  //   component: require("./components/Article.vue")
+  // },
+  // {
+  //   path: '/*',
+  //   redirect: '/home'
+  // },
+
 ]
 
 const router = new VueRouter({
   routes
 })
-// // 路由map
-// router.map({
-//   '/home': {
-//     component: function (resolve) {
-//       require(['./components/Home'], resolve)
-//     }
-//   },
-//   '/about': {
-//     component: function (resolve) {
-//       require(['./components/About'], resolve)
-//     }
-//   },
-//   '/tags': {
-//     component: function (resolve) {
-//       require(['./components/Tags'], resolve)
-//     }
-//   },
-//   '/article/:id': {
-//     name: 'article',
-//     component: function (resolve) {
-//       require(['./components/Article'], resolve)
-//     }
-//   }
 
-// })
-
-// router.redirect({
-//   '*': '/home'
-// })
 
 new Vue({
+  store,
   router,
   render: h => h(App)
 }).$mount('#app')
