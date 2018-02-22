@@ -1,10 +1,14 @@
 
+export default {
+    contentList: ({contentList}) => contentList.contentList,
 
-export const article = ({ article }) => article
+    headline: state => state.headline.headline,
 
-export const tags = ({ tags }) => tags.tagSet
+    article : ({ article }) => article,
 
-export const tagContentList = ({ tagContentList }) => tagContentList.tagContentList
-export const tagContentListId = ({ tagContentList }) => tagContentList.tagId
+    tags : ({ tags }) => tags.tagSet,
+    tagContentList : ({ tagContentList }) => tagContentList.tagContentList,
+    tagContentListId : ({ tagContentList }) => tagContentList.tagId,
 
-export const commentsList = ({ commentsList }) => commentsList.commentsList
+    commentsList : ({ commentsList }) => commentsList.commentsList,
+}

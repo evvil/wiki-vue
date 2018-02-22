@@ -1,7 +1,7 @@
 <template>
   <div class="list-wrapper">
     <ul class="list-container" id="list-ul">
-      <li v-for="item in contentList">
+      <li v-for="(item,i) in contentList" :key="i">
         <router-link :to="{ name: 'article', params: {id: item.objectId}}">
           <p class="list-title">{{item.title}}</p>
           <p class="list-updated">{{item.createdAt}}</p>
